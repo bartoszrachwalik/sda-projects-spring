@@ -3,6 +3,7 @@ package com.github.spring.web;
 import com.github.spring.player.model.Player;
 import com.github.spring.player.repository.PlayerRepository;
 import com.github.spring.player.service.PlayerService;
+import com.github.spring.team.repository.TeamRepository;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -10,9 +11,9 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.mock;
 
 public class PlayerServiceTest {
-
-    private final PlayerRepository repository = mock(PlayerRepository.class);
-    private final PlayerService service = new PlayerService(repository);
+    private final TeamRepository teamRepository = mock(TeamRepository.class);
+    private final PlayerRepository playerRepository = mock(PlayerRepository.class);
+    private final PlayerService service = new PlayerService(playerRepository, teamRepository);
 
     @Test
     public void addThrowExceptionForNull() {
